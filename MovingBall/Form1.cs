@@ -21,10 +21,13 @@ namespace MovingBall
 
         private int direction;
         
+        /// <summary>
+        /// Constructor does some preprocessing to determine step size and initial direction.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
-
+            
             maxSteps = 10;
             stepNumber = 1;
 

@@ -1,0 +1,9 @@
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\bin\Debug\DampedSpringMassSystem.exe.config
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedSpringMassSystem.csprojResolveAssemblyReference.cache
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedHarmonicOscillator.DampedSpringMass.resources
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedHarmonicOscillator.Properties.Resources.resources
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedSpringMassSystem.csproj.GenerateResource.Cache
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\bin\Debug\DampedSpringMassSystem.exe
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\bin\Debug\DampedSpringMassSystem.pdb
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedSpringMassSystem.exe
+C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\DampedSpringMassSystem\obj\Debug\DampedSpringMassSystem.pdb

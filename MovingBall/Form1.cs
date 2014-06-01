@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace MovingBall
 {
+    /// <summary>
+    /// A form for a simulation application...
+    /// </summary>
     public partial class Form1 : Form
     {
         private int currentYposition;
@@ -55,11 +58,12 @@ namespace MovingBall
                 stepNumber = 1;
                 direction *= -1;
             }
-
+            
             currentYposition += direction * stepSize;
             stepNumber++;
 
             football.Location = new Point(x, currentYposition);
         }
+
     }
 }

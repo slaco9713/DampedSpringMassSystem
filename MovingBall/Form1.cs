@@ -43,6 +43,11 @@ namespace MovingBall
             stepSize = length / steps;
         }
 
+        /// <summary>
+        /// Handles the move button click...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_ClickHandler(object sender, EventArgs e)
         {
             if (stepNumber > maxSteps)

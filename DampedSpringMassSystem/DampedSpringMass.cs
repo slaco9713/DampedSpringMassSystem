@@ -12,19 +12,17 @@ namespace DampedHarmonicOscillator
 {
     public partial class DampedSpringMass : Form
     {
-        private int currentXspring;
-        private int currentXmass;
-        private int equilibriumPosition;
+        private int springXcoord;
+        private int massXcoord;
 
-        private int currentYspring;
-        private int currentYmass;
+        private int springYcoord;
+        private int massYcoord;
         private int springHeight;
 
         private int direction;
 
         private int step;
         private int stepSize;
-        private int distance;
 
         private int maximumX;
         private int minimumX;
@@ -33,70 +31,63 @@ namespace DampedHarmonicOscillator
         {
             InitializeComponent();
 
-            //initialize the x-coord of spring & mass
-            equilibriumPosition = pictureSpring.Location.X + pictureSpring.Size.Width;
-            currentXspring = pictureSpring.Location.X + pictureSpring.Size.Width;
-            pictureMass.Location = new Point(currentXspring, pictureMass.Location.Y);
-            currentXmass = pictureMass.Location.X;
+            //springXcoord defined as top, right corner (rather than default - top, left corner)
+            springXcoord = pictureSpring.Location.X + pictureSpring.Size.Width;
+            pictureMass.Location = new Point(springXcoord, pictureMass.Location.Y);
+            massXcoord = pictureMass.Location.X;
 
-            //constant Y location of spring & mass
-            currentYspring = pictureSpring.Location.Y;
-            currentYmass = pictureMass.Location.Y;
+            springYcoord = pictureSpring.Location.Y;
+            massYcoord = pictureMass.Location.Y;
             springHeight = pictureSpring.Size.Height;
 
-            //initialize direction - note: spring & mass should MOVE TOGETHER ALWAYS!!
             direction = 1;
 
-            //initialize steps & stepSize
-   
-            step = 0;
-            
             maximumX = 395;
             minimumX = 95;
-
-            distance = maximumX - minimumX;
-            stepSize = distance / 10;
+            stepSize = (maximumX - minimumX) / 10;
+            step = 0;
         }
 
         private void moveButton_Click(object sender, EventArgs e)
         {
-            //if spring location is between equilib. & maximum, set direction
-            //CHANGE ALL OF THESE CONDITIONS - THEY ARE VERY BAD AND ARE SCREWING EVERYHING UP!!!
-            if ((direction == 1) && (currentXspring < maximumX))
+            //if spring-mass system hasn't reached maximum displacement, continue direction
+            if ((direction == 1) && (springXcoord < maximumX))
             {
                 direction = 1;
             }
-            else if ((direction == -1) && (currentXspring > minimumX))
+            else if ((direction == -1) && (springXcoord > minimumX))
             {
                 direction = -1;
             }
 
-            //if spring location is at (or has exceeded) max / min values, change direction
-            if (currentXspring >= maximumX)
+            //if spring location is at (or has exceeded) max / min displacement, change direction
+            if (springXcoord >= maximumX)
             {
                 direction = -1;
             }
-            else if(currentXspring <= minimumX)
+            else if(springXcoord <= minimumX)
             {
                 direction = 1;
             }
 
-            //controls the movement of mass / spring system
+            //controls  movement of spring-mass system
             if (direction == 1)
             {
                 step++;
-                currentXspring += stepSize;
-                currentXmass = currentXspring;
-                pictureSpring.Size = new Size(currentXspring, springHeight);
-                pictureMass.Location = new Point(currentXmass, currentYmass);
+                springXcoord += stepSize;
+                massXcoord = springXcoord;
+
+                pictureSpring.Size = new Size(springXcoord, springHeight);
+                pictureMass.Location = new Point(massXcoord, massYcoord);
             }
             else if (direction == -1)
             {
                 step++;
-                currentXspring -= stepSize;
-                currentXmass = currentXspring;
-                pictureSpring.Size = new Size(currentXspring, springHeight);
-                pictureMass.Location = new Point(currentXmass, currentYmass);
+                springXcoord -= stepSize;
+                massXcoord = springXcoord;
+
+                pictureSpring.Size = new Size(springXcoord, springHeight);
+                pictureMass.Location = new Point(massXcoord, massYcoord);
             }
 
             cycles.Text = step.ToString();

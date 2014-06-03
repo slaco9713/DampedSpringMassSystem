@@ -139,7 +139,6 @@
             this.moveButton.TabIndex = 13;
             this.moveButton.Text = "Move Mass";
             this.moveButton.UseVisualStyleBackColor = true;
-            this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
             // label_steps
             // 

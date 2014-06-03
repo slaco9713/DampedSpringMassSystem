@@ -47,9 +47,9 @@ namespace DampedHarmonicOscillator
             massYcoord = pictureMass.Location.Y;
             springHeight = pictureSpring.Size.Height;
 
-            currentLocation = springXcoord;
+            currentLocation = 245;
 
-            maximumZ = 450;
+            maximumZ = 550;
             minimumZ = 95;
 
             timer = new Timer();
@@ -59,18 +59,6 @@ namespace DampedHarmonicOscillator
             //this is for startSim button click handler
         }
 
-        private void moveButton_Click(object sender, EventArgs e)
-        {
-            //pictureSpring.Size = new Size(springXcoord, springHeight);
-            //pictureMass.Location = new Point(massXcoord, massYcoord);
-
-            int nextDelta = Convert.ToInt32(LinearTransformation(f.GetNextSample()));
-            currentLocation += nextDelta;
-
-            pictureSpring.Size = new Size(currentLocation, springHeight);
-            pictureMass.Location = new Point(currentLocation, massYcoord);
-        }
-
         private double LinearTransformation(double deltaX)
         { 
             return ((maximumZ - minimumZ) / (2*aMax)) * deltaX;
@@ -78,22 +66,27 @@ namespace DampedHarmonicOscillator
 
         private void button_startSim_Click(object sender, EventArgs e)
         {
-            k = Convert.ToDouble(stiffness.Text);
-            m = Convert.ToDouble(mass.Text);
-            c = Convert.ToDouble(dampingCoeff.Text);
-            aMax = Convert.ToDouble(max_x.Text);
+            timer.Stop();
 
-            f = new UnderDampedOscillator(k, m, c, aMax);
+            try
+            {
+                k = Convert.ToDouble(stiffness.Text);
+                m = Convert.ToDouble(mass.Text);
+                c = Convert.ToDouble(dampingCoeff.Text);
+                aMax = Convert.ToDouble(max_x.Text);
 
-            timer.Start();
+                f = new UnderDampedOscillator(k, m, c, aMax);
+                currentLocation = 245;
+
+                timer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OnTimerElapsed(Object source, EventArgs e)
-        {
-            DoInUIThread();
-        }
-
-        private void DoInUIThread()
         {
             int nextDelta = Convert.ToInt32(LinearTransformation(f.GetNextSample()));
             currentLocation += nextDelta;
@@ -101,6 +94,7 @@ namespace DampedHarmonicOscillator
             pictureSpring.Size = new Size(currentLocation, springHeight);
             pictureMass.Location = new Point(currentLocation, massYcoord);
         }
+
 
     }
 }

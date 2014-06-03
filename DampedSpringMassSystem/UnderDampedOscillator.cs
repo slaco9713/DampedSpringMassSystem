@@ -32,10 +32,9 @@ namespace DampedHarmonicOscillator
         public UnderDampedOscillator(double k, double m, double c, double aMax)
         {
             if ((c*c) - (4*k*m) >= -3.3)
-            {
-                MessageBox.Show("(c^2 - 4mk) must be greater than zero!!!");
-                throw new Exception("(c^2 - 4mk) must be greater than zero!!!");
-            }
+                throw new Exception("(c^2 - 4mk) must be less than zero!!!");
+            else if (((2 * k * m) - (c * c)) <= 0)
+                throw new Exception("(2mk - c^2) must be greater than zero!!!");
 
             this.k = k;
             this.m = m;

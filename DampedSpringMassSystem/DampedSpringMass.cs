@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,13 +20,19 @@ namespace DampedHarmonicOscillator
         private int massYcoord;
         private int springHeight;
 
-        private int direction;
+        private int maximumZ;
+        private int minimumZ;
 
-        private int step;
-        private int stepSize;
+        private double k;
+        private double m;
+        private double c;
+        private double aMax;
 
-        private int maximumX;
-        private int minimumX;
+        private int currentLocation;
+
+        private UnderDampedOscillator f;
+
+        private Timer timer;
 
         public DampedSpringMass()
         {
@@ -40,59 +47,60 @@ namespace DampedHarmonicOscillator
             massYcoord = pictureMass.Location.Y;
             springHeight = pictureSpring.Size.Height;
 
-            direction = 1;
+            currentLocation = springXcoord;
 
-            maximumX = 395;
-            minimumX = 95;
-            stepSize = (maximumX - minimumX) / 10;
-            step = 0;
+            maximumZ = 450;
+            minimumZ = 95;
+
+            timer = new Timer();
+            timer.Tick += OnTimerElapsed;
+            timer.Interval = 100;
+
+            //this is for startSim button click handler
         }
 
         private void moveButton_Click(object sender, EventArgs e)
         {
-            //if spring-mass system hasn't reached maximum displacement, continue direction
-            if ((direction == 1) && (springXcoord < maximumX))
-            {
-                direction = 1;
-            }
-            else if ((direction == -1) && (springXcoord > minimumX))
-            {
-                direction = -1;
-            }
+            //pictureSpring.Size = new Size(springXcoord, springHeight);
+            //pictureMass.Location = new Point(massXcoord, massYcoord);
 
-            //if spring location is at (or has exceeded) max / min displacement, change direction
-            if (springXcoord >= maximumX)
-            {
-                direction = -1;
-            }
-            else if(springXcoord <= minimumX)
-            {
-                direction = 1;
-            }
+            int nextDelta = Convert.ToInt32(LinearTransformation(f.GetNextSample()));
+            currentLocation += nextDelta;
 
-            //controls  movement of spring-mass system
-            if (direction == 1)
-            {
-                step++;
-                springXcoord += stepSize;
-                massXcoord = springXcoord;
-
-                pictureSpring.Size = new Size(springXcoord, springHeight);
-                pictureMass.Location = new Point(massXcoord, massYcoord);
-            }
-            else if (direction == -1)
-            {
-                step++;
-                springXcoord -= stepSize;
-                massXcoord = springXcoord;
-
-                pictureSpring.Size = new Size(springXcoord, springHeight);
-                pictureMass.Location = new Point(massXcoord, massYcoord);
-            }
-
-            cycles.Text = step.ToString();
+            pictureSpring.Size = new Size(currentLocation, springHeight);
+            pictureMass.Location = new Point(currentLocation, massYcoord);
         }
 
+        private double LinearTransformation(double deltaX)
+        { 
+            return ((maximumZ - minimumZ) / (2*aMax)) * deltaX;
+        }
+
+        private void button_startSim_Click(object sender, EventArgs e)
+        {
+            k = Convert.ToDouble(stiffness.Text);
+            m = Convert.ToDouble(mass.Text);
+            c = Convert.ToDouble(dampingCoeff.Text);
+            aMax = Convert.ToDouble(max_x.Text);
+
+            f = new UnderDampedOscillator(k, m, c, aMax);
+
+            timer.Start();
+        }
+
+        private void OnTimerElapsed(Object source, EventArgs e)
+        {
+            DoInUIThread();
+        }
+
+        private void DoInUIThread()
+        {
+            int nextDelta = Convert.ToInt32(LinearTransformation(f.GetNextSample()));
+            currentLocation += nextDelta;
+
+            pictureSpring.Size = new Size(currentLocation, springHeight);
+            pictureMass.Location = new Point(currentLocation, massYcoord);
+        }
 
     }
 }

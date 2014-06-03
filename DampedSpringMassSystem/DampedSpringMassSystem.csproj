@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPlot">
+      <HintPath>..\..\nplot-0.9.10.0\bin\net\2.0\release\NPlot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +56,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnderDampedOscillator.cs" />
     <EmbeddedResource Include="DampedSpringMass.resx">
       <DependentUpon>DampedSpringMass.cs</DependentUpon>
     </EmbeddedResource>

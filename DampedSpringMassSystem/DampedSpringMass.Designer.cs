@@ -31,12 +31,12 @@
             this.stiffness = new System.Windows.Forms.TextBox();
             this.mass = new System.Windows.Forms.TextBox();
             this.dampingCoeff = new System.Windows.Forms.TextBox();
-            this.label_stiffness = new System.Windows.Forms.Label();
+            this.label_k = new System.Windows.Forms.Label();
             this.label_mass = new System.Windows.Forms.Label();
-            this.label_dampcoeff = new System.Windows.Forms.Label();
-            this.startButton = new System.Windows.Forms.Button();
+            this.label_dampingCoeff = new System.Windows.Forms.Label();
+            this.button_startSim = new System.Windows.Forms.Button();
             this.max_x = new System.Windows.Forms.TextBox();
-            this.label_max_x = new System.Windows.Forms.Label();
+            this.label_initialDisplacement = new System.Windows.Forms.Label();
             this.cycles = new System.Windows.Forms.TextBox();
             this.moveButton = new System.Windows.Forms.Button();
             this.label_steps = new System.Windows.Forms.Label();
@@ -69,14 +69,15 @@
             this.dampingCoeff.Size = new System.Drawing.Size(100, 20);
             this.dampingCoeff.TabIndex = 4;
             // 
-            // label_stiffness
+            // label_k
             // 
-            this.label_stiffness.AutoSize = true;
-            this.label_stiffness.Location = new System.Drawing.Point(26, 45);
-            this.label_stiffness.Name = "label_stiffness";
-            this.label_stiffness.Size = new System.Drawing.Size(62, 13);
-            this.label_stiffness.TabIndex = 5;
-            this.label_stiffness.Text = "Stiffness, k:";
+            this.label_k.AutoSize = true;
+            this.label_k.Location = new System.Drawing.Point(26, 45);
+            this.label_k.Name = "label_k";
+            this.label_k.Size = new System.Drawing.Size(97, 13);
+            this.label_k.TabIndex = 5;
+            this.label_k.Text = "Spring Constant, k:";
+            this.label_k.UseWaitCursor = true;
             // 
             // label_mass
             // 
@@ -87,23 +88,24 @@
             this.label_mass.TabIndex = 6;
             this.label_mass.Text = "Mass, m:";
             // 
-            // label_dampcoeff
+            // label_dampingCoeff
             // 
-            this.label_dampcoeff.AutoSize = true;
-            this.label_dampcoeff.Location = new System.Drawing.Point(264, 45);
-            this.label_dampcoeff.Name = "label_dampcoeff";
-            this.label_dampcoeff.Size = new System.Drawing.Size(95, 13);
-            this.label_dampcoeff.TabIndex = 7;
-            this.label_dampcoeff.Text = "Damping Coeff., c:";
+            this.label_dampingCoeff.AutoSize = true;
+            this.label_dampingCoeff.Location = new System.Drawing.Point(264, 45);
+            this.label_dampingCoeff.Name = "label_dampingCoeff";
+            this.label_dampingCoeff.Size = new System.Drawing.Size(95, 13);
+            this.label_dampingCoeff.TabIndex = 7;
+            this.label_dampingCoeff.Text = "Damping Coeff., c:";
             // 
-            // startButton
+            // button_startSim
             // 
-            this.startButton.Location = new System.Drawing.Point(512, 61);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(100, 20);
-            this.startButton.TabIndex = 8;
-            this.startButton.Text = "Start Simulation";
-            this.startButton.UseVisualStyleBackColor = true;
+            this.button_startSim.Location = new System.Drawing.Point(512, 61);
+            this.button_startSim.Name = "button_startSim";
+            this.button_startSim.Size = new System.Drawing.Size(100, 20);
+            this.button_startSim.TabIndex = 8;
+            this.button_startSim.Text = "Start Simulation";
+            this.button_startSim.UseVisualStyleBackColor = true;
+            this.button_startSim.Click += new System.EventHandler(this.button_startSim_Click);
             // 
             // max_x
             // 
@@ -112,14 +114,14 @@
             this.max_x.Size = new System.Drawing.Size(100, 20);
             this.max_x.TabIndex = 9;
             // 
-            // label_max_x
+            // label_initialDisplacement
             // 
-            this.label_max_x.AutoSize = true;
-            this.label_max_x.Location = new System.Drawing.Point(389, 45);
-            this.label_max_x.Name = "label_max_x";
-            this.label_max_x.Size = new System.Drawing.Size(62, 13);
-            this.label_max_x.TabIndex = 10;
-            this.label_max_x.Text = "Maximum x:";
+            this.label_initialDisplacement.AutoSize = true;
+            this.label_initialDisplacement.Location = new System.Drawing.Point(389, 45);
+            this.label_initialDisplacement.Name = "label_initialDisplacement";
+            this.label_initialDisplacement.Size = new System.Drawing.Size(100, 13);
+            this.label_initialDisplacement.TabIndex = 10;
+            this.label_initialDisplacement.Text = "Max. Displacement:";
             // 
             // cycles
             // 
@@ -187,12 +189,12 @@
             this.Controls.Add(this.label_steps);
             this.Controls.Add(this.moveButton);
             this.Controls.Add(this.cycles);
-            this.Controls.Add(this.label_max_x);
+            this.Controls.Add(this.label_initialDisplacement);
             this.Controls.Add(this.max_x);
-            this.Controls.Add(this.startButton);
-            this.Controls.Add(this.label_dampcoeff);
+            this.Controls.Add(this.button_startSim);
+            this.Controls.Add(this.label_dampingCoeff);
             this.Controls.Add(this.label_mass);
-            this.Controls.Add(this.label_stiffness);
+            this.Controls.Add(this.label_k);
             this.Controls.Add(this.dampingCoeff);
             this.Controls.Add(this.mass);
             this.Controls.Add(this.stiffness);
@@ -214,12 +216,12 @@
         private System.Windows.Forms.TextBox stiffness;
         private System.Windows.Forms.TextBox mass;
         private System.Windows.Forms.TextBox dampingCoeff;
-        private System.Windows.Forms.Label label_stiffness;
+        private System.Windows.Forms.Label label_k;
         private System.Windows.Forms.Label label_mass;
-        private System.Windows.Forms.Label label_dampcoeff;
-        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Label label_dampingCoeff;
+        private System.Windows.Forms.Button button_startSim;
         private System.Windows.Forms.TextBox max_x;
-        private System.Windows.Forms.Label label_max_x;
+        private System.Windows.Forms.Label label_initialDisplacement;
         private System.Windows.Forms.TextBox cycles;
         private System.Windows.Forms.Button moveButton;
         private System.Windows.Forms.Label label_steps;

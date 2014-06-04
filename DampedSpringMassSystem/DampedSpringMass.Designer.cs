@@ -37,15 +37,14 @@
             this.button_startSim = new System.Windows.Forms.Button();
             this.max_x = new System.Windows.Forms.TextBox();
             this.label_initialDisplacement = new System.Windows.Forms.Label();
-            this.cycles = new System.Windows.Forms.TextBox();
-            this.moveButton = new System.Windows.Forms.Button();
-            this.label_steps = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureWall = new System.Windows.Forms.PictureBox();
             this.pictureMass = new System.Windows.Forms.PictureBox();
             this.pictureSpring = new System.Windows.Forms.PictureBox();
-            this.pictureWall = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSpring)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureWall)).BeginInit();
             this.SuspendLayout();
             // 
             // stiffness
@@ -123,31 +122,24 @@
             this.label_initialDisplacement.TabIndex = 10;
             this.label_initialDisplacement.Text = "Max. Displacement:";
             // 
-            // cycles
+            // pictureBox1
             // 
-            this.cycles.Location = new System.Drawing.Point(392, 346);
-            this.cycles.Name = "cycles";
-            this.cycles.ReadOnly = true;
-            this.cycles.Size = new System.Drawing.Size(100, 20);
-            this.cycles.TabIndex = 12;
+            this.pictureBox1.Image = global::DampedHarmonicOscillator.Properties.Resources.equation;
+            this.pictureBox1.Location = new System.Drawing.Point(58, 295);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(530, 86);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
-            // moveButton
+            // pictureWall
             // 
-            this.moveButton.Location = new System.Drawing.Point(512, 346);
-            this.moveButton.Name = "moveButton";
-            this.moveButton.Size = new System.Drawing.Size(75, 20);
-            this.moveButton.TabIndex = 13;
-            this.moveButton.Text = "Move Mass";
-            this.moveButton.UseVisualStyleBackColor = true;
-            // 
-            // label_steps
-            // 
-            this.label_steps.AutoSize = true;
-            this.label_steps.Location = new System.Drawing.Point(389, 330);
-            this.label_steps.Name = "label_steps";
-            this.label_steps.Size = new System.Drawing.Size(71, 13);
-            this.label_steps.TabIndex = 14;
-            this.label_steps.Text = "Steps Taken:";
+            this.pictureWall.Image = global::DampedHarmonicOscillator.Properties.Resources.wall;
+            this.pictureWall.Location = new System.Drawing.Point(29, 130);
+            this.pictureWall.Name = "pictureWall";
+            this.pictureWall.Size = new System.Drawing.Size(20, 178);
+            this.pictureWall.TabIndex = 0;
+            this.pictureWall.TabStop = false;
             // 
             // pictureMass
             // 
@@ -169,25 +161,14 @@
             this.pictureSpring.TabIndex = 1;
             this.pictureSpring.TabStop = false;
             // 
-            // pictureWall
-            // 
-            this.pictureWall.Image = global::DampedHarmonicOscillator.Properties.Resources.wall;
-            this.pictureWall.Location = new System.Drawing.Point(29, 130);
-            this.pictureWall.Name = "pictureWall";
-            this.pictureWall.Size = new System.Drawing.Size(20, 178);
-            this.pictureWall.TabIndex = 0;
-            this.pictureWall.TabStop = false;
-            // 
             // DampedSpringMass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 393);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureWall);
             this.Controls.Add(this.pictureMass);
-            this.Controls.Add(this.label_steps);
-            this.Controls.Add(this.moveButton);
-            this.Controls.Add(this.cycles);
             this.Controls.Add(this.label_initialDisplacement);
             this.Controls.Add(this.max_x);
             this.Controls.Add(this.button_startSim);
@@ -200,9 +181,10 @@
             this.Controls.Add(this.pictureSpring);
             this.Name = "DampedSpringMass";
             this.Text = "Underdamped Spring-Mass System";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSpring)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureWall)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,10 +203,8 @@
         private System.Windows.Forms.Button button_startSim;
         private System.Windows.Forms.TextBox max_x;
         private System.Windows.Forms.Label label_initialDisplacement;
-        private System.Windows.Forms.TextBox cycles;
-        private System.Windows.Forms.Button moveButton;
-        private System.Windows.Forms.Label label_steps;
         private System.Windows.Forms.PictureBox pictureMass;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

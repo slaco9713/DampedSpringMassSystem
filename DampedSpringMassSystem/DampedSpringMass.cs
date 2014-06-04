@@ -93,8 +93,6 @@ namespace DampedHarmonicOscillator
 
             pictureSpring.Size = new Size(currentLocation, springHeight);
             pictureMass.Location = new Point(currentLocation, massYcoord);
-        }
-
-
+        }    
     }
 }

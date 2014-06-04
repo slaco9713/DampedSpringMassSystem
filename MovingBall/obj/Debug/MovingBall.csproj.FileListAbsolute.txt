@@ -1,9 +1,0 @@
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\bin\Debug\MovingBall.exe.config
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.csprojResolveAssemblyReference.cache
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.Form1.resources
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.Properties.Resources.resources
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.csproj.GenerateResource.Cache
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\bin\Debug\MovingBall.exe
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\bin\Debug\MovingBall.pdb
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.exe
-C:\Users\saman_000\Local Git Repo\SimpleHarmonicMotion\MovingBall\obj\Debug\MovingBall.pdb

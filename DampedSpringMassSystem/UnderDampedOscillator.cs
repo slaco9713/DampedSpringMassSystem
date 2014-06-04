@@ -23,15 +23,9 @@ namespace DampedHarmonicOscillator
         private double n;
         private double currentX;
 
-        public int numberOfCycles
-        {
-            get;
-            set;
-        }
-
         public UnderDampedOscillator(double k, double m, double c, double aMax)
         {
-            if ((c*c) - (4*k*m) >= -3.3)
+            if ((c * c) - (4 * k * m) >= -3.3)
                 throw new Exception("(c^2 - 4mk) must be less than zero!!!");
             else if (((2 * k * m) - (c * c)) <= 0)
                 throw new Exception("(2mk - c^2) must be greater than zero!!!");
@@ -55,9 +49,7 @@ namespace DampedHarmonicOscillator
         public double GetNextSample()
         {
             n += deltaT;
-            if (n % 10 == 0)
-                numberOfCycles++;
-
+            
             double nextSample = Evaluate(n);
             double nextDelta = nextSample - currentX;
             currentX = nextSample;

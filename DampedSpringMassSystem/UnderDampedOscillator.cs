@@ -35,7 +35,6 @@ namespace DampedHarmonicOscillator
             this.c = c;
             this.aMax = aMax;
 
-            //TODO: WRITE YOUR CONSTRUCTOR - initialize your variables!!!
             w = Math.Sqrt(4 * m * k - Math.Pow(c, 2)) / (2 * m);
             A = aMax;
             B = (c / (2 * m) * aMax) / w;
